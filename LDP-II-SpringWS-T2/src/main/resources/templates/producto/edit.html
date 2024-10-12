@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Editar Producto</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">Distribuidora Internacional</a>
+
+		<!-- Toggler/Collapse Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar links -->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/}">Mantenedor
+						Inventario</a></li>
+			</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/producto/}">Mantenedor Producto</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container mt-3">
+		<div class="row">
+			<div
+				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Editar Producto</h1>
+				<div class="card-body">
+					<form
+						th:action="@{/producto/{id} (id=${producto.idProducto})}"
+						th:object="${producto}" method="POST">
+
+						<div class="form-group" style="display: none">
+							<label>Id del Producto</label> <input type="text"
+								name="idProducto" th:field="*{idProducto}"
+								class="form-control" placeholder="Ingresar Id del Producto" />
+						</div>
+
+						<div class="form-group">
+							<label>Nombre</label> <input type="text" name="nombre"
+								th:field="*{nombre}" class="form-control"
+								placeholder="Ingresar Nombre del Producto" />
+						</div>
+
+						<div class="form-group">
+							<label>Categoria</label> <select th:field="*{idCategoria}"
+								name="ListaCategorias" class="form-control">
+								<option th:each="categoria :${ListaCategorias}"
+									th:value="${categoria.idCategoria}" th:text="${categoria.descripcion}" />
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label>Stock Actual</label> <input type="text"
+								name="stockActual" th:field="*{stockActual}"
+								class="form-control" placeholder="Ingresar Costo de Ingreso" />
+						</div>
+
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

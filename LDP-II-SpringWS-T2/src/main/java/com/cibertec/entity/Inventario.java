@@ -9,7 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,10 +29,9 @@ public class Inventario implements Serializable{
 	@Column(name = "FEC_INV")
 	private Date fecha;
 	
-	@OneToMany
 	@JoinColumn(name = "IDE_PRO")
-	@Column(name = "IDE_PRO")
-	private Integer idProducto;
+	@ManyToOne
+	private Producto idProducto;
 	
 	@Column(name = "COS_ING")
 	private double costoIngreso;

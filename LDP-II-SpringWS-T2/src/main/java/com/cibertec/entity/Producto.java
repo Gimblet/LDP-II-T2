@@ -17,7 +17,7 @@ import lombok.Setter;
 @Table(name = "productos")
 public class Producto implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@Column(name = "IDE_PRO")
 	private Integer idProducto;
@@ -25,10 +25,9 @@ public class Producto implements Serializable{
 	@Column(name = "NOM_PRO")
 	private String nombre;
 	
-	@ManyToOne
 	@JoinColumn(name = "IDE_CAT")
-	@Column(name = "IDE_CAT")
-	private Integer idCategoria;
+	@ManyToOne
+	private Categoria idCategoria;
 	
 	@Column(name = "STK_ACT")
 	private int stockActual;
